@@ -1,0 +1,31 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+            "label": "build",
+            "type": "shell",
+            "command": "nvcc",
+            "args":["-g","${file}","-o","build/${fileBasenameNoExtension}",
+                "-G",
+                // include 头文件
+                "-I", "/usr/local/cuda/include",
+                // "-I", "/usr/local/cuda-11.7/samples/common/inc",
+                // lib 库文件地址
+                "-L", "/usr/local/cuda/lib64",   
+                // "-L", "/usr/local/cuda-11.7/samples/common/lib",  
+                "-l", "cudart",                           
+                "-l", "cublas",
+                // "-l", "cudnn",
+                "-l", "curand",
+                "-D_MWAITXINTRIN_H_INCLUDED"  
+            ]
+        },
+		{
+			"type": "shell",
+			"label": "cmakebuild",
+			"command": "cd build && cmake .. && make",
+			"args": []
+			
+		}
+	]
+}

@@ -8,7 +8,6 @@
             "name": "CUDA C++: Launch",
             "type": "cuda-gdb",
             "request": "launch",
-            "cwd": "${workspaceFolder}",
             "program": "${workspaceFolder}/build/${fileBasenameNoExtension}",
             "preLaunchTask": "build"
         },
